@@ -10,25 +10,6 @@ from flask_cors import CORS
 def server_config(app):
     load_dotenv()
     cors_config(app)
-    app_cofig(app)
-
-def app_cofig(app):
-    app.secret_key = os.getenv('SECRET_KEY')
-
-    server_status = os.getenv('SERVER_STATUS', 'DEVELOPMENT')
-
-    if server_status == 'DEVELOPMENT':
-        app.config.update(
-            SERVER_NAME=os.getenv('DEVELOPMENT_SERVER_NAME'),
-            SESSION_COOKIE_NAME=os.getenv('DEVELOPMENT_SERVER_NAME'),
-            SESSION_COOKIE_DOMAIN=os.getenv('DEVELOPMENT_SERVER_NAME'),
-        )
-    elif server_status == 'PRODUCTION':
-        app.config.update(
-            SERVER_NAME=os.getenv('PRODUCTION_SERVER_NAME'),
-            SESSION_COOKIE_NAME=os.getenv('PRODUCTION_SERVER_NAME'),
-            SESSION_COOKIE_DOMAIN=os.getenv('PRODUCTION_SERVER_NAME')
-        )
 
 
 def cors_config(app):
